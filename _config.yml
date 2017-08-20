@@ -6,6 +6,7 @@ baseurl: ""
 url: "https://hoofbeats.github.io"
 twitter_username: HoofbeatsHealth
 github_username:  Hoofbeats
+anchor_username: HoofbeatsHealth
 
 # Build settings
 markdown: kramdown
