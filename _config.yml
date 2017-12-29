@@ -11,6 +11,10 @@ anchor_username: HoofbeatsHealth
 # Build settings
 markdown: kramdown
 permalink: /:year/:title/
+collections:
+  visuals:
+    output: true
+    permalink: /:collection/:name/
 exclude: [
   "node_modules",
   "LICENSE",

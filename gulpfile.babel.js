@@ -70,7 +70,7 @@ gulp.task('css', () => {
   return gulp.src('css/main.css')
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe($.cssnano())
-    .pipe(gulp.dest('_site/css'));
+    .pipe(gulp.dest('_includes/'));
 });
 
 // Compile scss to css.
@@ -90,7 +90,7 @@ gulp.task('serve', ['jekyll-build'], () => {
     // Run as an https by uncommenting 'https: true'
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
-    // https: true,
+    https: true,
     server: '_site',
     port: 3000
   });
@@ -98,6 +98,7 @@ gulp.task('serve', ['jekyll-build'], () => {
   // Warch html changes.
   gulp.watch([
     'css/**/*.css',
+    'sass/**/*.sass',
     'scripts/**/*.js',
     '_includes/**/*.html',
     '_layouts/**/*.html',
@@ -137,7 +138,7 @@ gulp.task('generate-service-worker', (callback) => {
         .pipe(gulp.dest('.'));
   });
 
-gulp.task('jekyll-build', ['scripts', 'scss'], $.shell.task(['jekyll build']));
+gulp.task('jekyll-build', ['scripts', 'scss', 'css'], $.shell.task(['jekyll build']));
 
 gulp.task('jekyll-build-for-deploy', $.shell.task(['jekyll build']));
 
@@ -150,7 +151,6 @@ gulp.task('build', () =>
     'scripts',
     'jekyll-build-for-deploy',
     'minify-html',
-    'css',
     'generate-service-worker',
     'minify-images',
     'revert-config'
@@ -178,4 +178,3 @@ gulp.task('deploy', () => {
     'revert-config'
   )
 });
-

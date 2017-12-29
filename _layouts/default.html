@@ -1,28 +1,29 @@
 <!doctype html>
 <html amp lang="en">
 
-  {% include head.html %}
+{% include head.html %}
 
-  <body>
+<body class="flex flex-column-wrap">
+	<div class="flex">
+		{% include nav.html %}
+	</div>
 
-    {% include header.html %}
+	<div class="page-content">
+		<div class="wrapper">
+			{{ content }}
+		</div>
+	</div>
 
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
+	{% include footer.html %}
 
-    {% include footer.html %}
-
-  <link async href="{{ "/scripts/main.min.js" | relative_url }}">
-  <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register("{{ "/sw.js" | relative_url }}").then(function() {
-      console.log("Service Worker Registered");
-    });
-  }
-  </script>
-  </body>
+	<link async href="{{ " /scripts/main.min.js " | relative_url }}">
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register("{{ " / sw.js " | relative_url }}").then(function() {
+				console.log("Service Worker Registered");
+			});
+		}
+	</script>
+</body>
 
 </html>
